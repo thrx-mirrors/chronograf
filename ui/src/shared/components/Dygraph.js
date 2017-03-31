@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import React, {PropTypes} from 'react'
-import Dygraph from '../../external/dygraph'
+import Dygraph from 'dygraphs'
 import getRange from 'src/shared/parsing/getRangeForDygraph'
 import _ from 'lodash'
 
@@ -28,9 +28,9 @@ const LINE_COLORS = [
   '#a0725b',
 ]
 
-export default React.createClass({
-  displayName: 'Dygraph',
+const highlightSeriesBackgroundColor = 'rgb(41,41,51)'
 
+export default React.createClass({
   propTypes: {
     ranges: shape({
       y: arrayOf(number),
@@ -80,8 +80,8 @@ export default React.createClass({
       labelsDiv: legendContainerNode,
       labelsKMB: true,
       rightGap: 0,
-      leftGap: 0,
-      highlightSeriesBackgroundAlpha: 1,
+      highlightSeriesBackgroundAlpha: 0.5,
+      highlightSeriesBackgroundColor,
       fillGraph: this.props.isGraphFilled,
       axisLineWidth: 2,
       gridLineWidth: 1,
